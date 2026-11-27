@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate Login</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.35)
+), url('/media/destination_images/login-bg.png');
+
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-box {
+            background-color: white;
+
+            width: 350px;
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.15);
+
+            text-align: center;
+        }
+
+        h1 {
+            color: #116b78;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        input {
+            width: 90%;
+
+            padding: 12px;
+
+            margin: 10px 0;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+        }
+
+        button {
+            width: 95%;
+
+            padding: 12px;
+
+            margin-top: 15px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background-color: #0b9d9a;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #087d7a;
+        }
+
+        .error {
+            color: red;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="login-box">
+
+        <h1>🌍 TravelMate</h1>
+
+        <p>
+            Smart Travel & Tourism
+        </p>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            {% if error %}
+
+                <p class="error">
+                    {{ error }}
+                </p>
+
+            {% endif %}
+
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                required
+            >
+
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            >
+
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+        <p>Don't have an account?
+    <a href="{% url 'signup' %}">Sign Up</a>
+</p>
+
+    </div>
+
+</body>
+
+</html>

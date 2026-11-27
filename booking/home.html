@@ -1,0 +1,39 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TravelMate Destinations</title>
+</head>
+<body>
+
+    <h1>Welcome to TravelMate!</h1>
+
+    <p>Smart Travel and Tourism Recommendation System</p>
+
+    <h2>Our Travel Destinations</h2>
+
+    <ul>
+        {% for destination in destinations %}
+
+        <li>
+            <h3>{{ destination.name }}</h3>
+
+            <p>Location: {{ destination.location }}</p>
+
+            <p>Category: {{ destination.category }}</p>
+
+            <p>Description: {{ destination.description }}</p>
+
+            <p>Best Season: {{ destination.best_season }}</p>
+
+            <p>Estimated Price: ₹{{ destination.price }}</p>
+        </li>
+
+        {% empty %}
+        <li>No destinations added yet.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+```

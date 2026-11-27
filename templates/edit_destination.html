@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Destination - TravelMate</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3f2fd;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            width: 450px;
+            max-width: 90%;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1769aa;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #1769aa;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>✏️ Edit Destination</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Destination Name</label>
+        <input type="text" name="name"
+               value="{{ destination.name }}" required>
+
+        <label>Location</label>
+        <input type="text" name="location"
+               value="{{ destination.location }}" required>
+
+        <label>Description</label>
+        <textarea name="description" required>{{ destination.description }}</textarea>
+
+        <label>Category</label>
+        <input type="text" name="category"
+               value="{{ destination.category }}" required>
+
+        <label>Price</label>
+        <input type="number" name="price"
+               value="{{ destination.price }}" min="0" required>
+
+        <button type="submit">Update Destination</button>
+    </form>
+
+    <a href="{% url 'destinations' %}" class="back">
+        ← Back to Destinations
+    </a>
+
+</div>
+
+</body>
+</html>

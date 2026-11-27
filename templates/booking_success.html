@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Successful - TravelMate</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3f2fd;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-box {
+            background: white;
+            max-width: 550px;
+            width: 85%;
+            padding: 40px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .check {
+            font-size: 75px;
+            color: #0b9d9a;
+        }
+
+        h1 {
+            color: #0b9d9a;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .destination {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            color: #116b78;
+        }
+
+        .home-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 30px;
+            background: #42a5f5;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .home-btn:hover {
+            background: #1976d2;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="success-box">
+
+    <div class="check">✔</div>
+
+    <h1>Booking Successful!</h1>
+
+    <p>
+        Congratulations, {{ full_name }}!
+    </p>
+
+    <p>
+        Your trip has been booked successfully.
+        Thank you for choosing TravelMate.
+    </p>
+
+    <div class="destination">
+        <b>Destination:</b>
+        {{ destination.name }}
+    </div>
+
+    <p>
+        Get ready for an amazing travel experience!
+    </p>
+
+    <a href="{% url 'destinations' %}" class="home-btn">
+        Explore More Destinations
+    </a>
+
+</div>
+
+</body>
+</html>

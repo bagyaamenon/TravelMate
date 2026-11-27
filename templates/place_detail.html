@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ destination.name }} - TravelMate</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            margin: 0;
+        }
+
+        header {
+            background-color: #42a5f5;
+            color: white;
+            padding: 20px 50px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .place-box {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .place-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .place-box h2 {
+            color: #116b78;
+            font-size: 32px;
+        }
+
+        .info {
+            background-color: #f5f7fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .info b {
+            color: #116b78;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .price {
+            color: #0b9d9a;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #0b9d9a;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #087d7a;
+        }
+
+        .book-btn {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #42a5f5;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .book-btn:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 TravelMate</h1>
+</header>
+
+<div class="container">
+
+    <div class="place-box">
+
+        {% if destination.image %}
+        <img src="{{ destination.image.url }}"
+             alt="{{ destination.name }}"
+             class="place-image">
+        {% endif %}
+
+        <h2>📍 {{ destination.name }}</h2>
+
+        <div class="info">
+            <b>Location:</b>
+            {{ destination.location }}
+        </div>
+
+        <div class="info">
+            <b>Category:</b>
+            {{ destination.category }}
+        </div>
+
+        <div class="info">
+            <b>Description:</b>
+            <p class="description">
+                {{ destination.description }}
+            </p>
+        </div>
+
+        <div class="info">
+            <b>Best Season:</b>
+            {{ destination.best_season }}
+        </div>
+
+        <div class="info">
+            <b>Estimated Travel Price:</b>
+            <p class="price">
+                ₹{{ destination.price }}
+            </p>
+        </div>
+
+        <!-- Booking Button -->
+        <a href="{% url 'booking' destination.id %}"
+           class="book-btn">
+            ✈ Book Now
+        </a>
+
+        <a href="{% url 'destinations' %}" class="back-btn">
+            ← Back to Destinations
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

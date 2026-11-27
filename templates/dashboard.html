@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TravelMate Dashboard</title>
+
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.30),
+        rgba(0, 0, 0, 0.30)
+    ), url('/media/destination_images/login-bg.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    margin: 0;
+}
+
+       header {
+    background-color: #42a5f5;
+    color: white;
+    padding: 20px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.logout-btn {
+    background-color: #e53935;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background-color: #c62828;
+}
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .welcome h2 {
+            color: #116b78;
+        }
+
+        .welcome p {
+            color: #555;
+        }
+
+        .destinations {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card {
+            background-color: white;
+            width: 220px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: #116b78;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #0b9d9a;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .explore-btn:hover {
+            background-color: #087d7a;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 TravelMate</h1>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+
+        <a href="{% url 'profile' %}"
+           style="text-decoration: none; color: white; display: flex; align-items: center;">
+
+            {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}"
+                     alt="Profile Picture"
+                     style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+            {% else %}
+                <span>👤 My Profile</span>
+            {% endif %}
+
+        </a>
+
+        <a href="{% url 'logout' %}" class="logout-btn">
+            Logout
+        </a>
+
+    </div>
+</header>
+
+
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>Welcome, {{ username }}! 🎉</h2>
+
+        <p>
+            Welcome to TravelMate, your Smart Travel and Tourism
+            Recommendation System.
+        </p>
+
+       <a href="{% url 'destinations' %}" class="explore-btn">
+    Explore Destinations →
+</a>
+
+<br><br>
+
+<a href="{% url 'my_bookings' %}" class="explore-btn">
+    📋 My Bookings
+</a>
+
+
+    </div>
+
+</div>
+

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Trip - TravelMate</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e3f2fd;
+            margin: 0;
+        }
+
+        header {
+            background: #42a5f5;
+            color: white;
+            padding: 20px 50px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #116b78;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #116b78;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            background: #0b9d9a;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #087d7a;
+        }
+
+        .error {
+            color: red;
+            background: #ffeaea;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .destination {
+            background: #f5f7fa;
+            padding: 12px;
+            border-radius: 8px;
+            color: #116b78;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 TravelMate</h1>
+</header>
+
+<div class="container">
+
+    <h2>✈ Book Your Trip</h2>
+
+    <p class="destination">
+        <b>Selected Destination:</b>
+        {{ destination.name }}
+    </p>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Full Name</label>
+        <input type="text" name="full_name"
+               maxlength="100" required>
+
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone"
+               minlength="7" maxlength="15"
+               pattern="[0-9+ -]{7,15}" required>
+
+        <label>Travel Date</label>
+        <input type="date" name="travel_date"
+               min="{{ today }}" required>
+
+        <label>Number of Travellers</label>
+        <input type="number" name="persons"
+               min="1" max="100" required>
+
+        <button type="submit">
+            Confirm Booking
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
